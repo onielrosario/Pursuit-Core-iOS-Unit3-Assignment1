@@ -9,12 +9,27 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet weak var peopleTableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
+  var people = [People]()
 
-  override func viewDidLoad() {
+    
+    override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
+    loadData()
   }
 
-
+    func loadData() {
+        if let path = Bundle.main.path(forResource: "userinfo", ofType: "json") {
+            let myURL = URL.init(fileURLWithPath: path)
+            if let data = try? Data.init(contentsOf: myURL) {
+                do {
+                    self.people = try JSONDecoder().decode([People].self, from: data)
+                } catch {
+                    print(error)
+                }
+            }
+        }
+    }
 }
 
