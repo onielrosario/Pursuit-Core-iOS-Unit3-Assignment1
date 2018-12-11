@@ -25,41 +25,41 @@ class ViewController: UIViewController {
      peopleTableView.dataSource = self
         searchBar.delegate = self
     super.viewDidLoad()
-    
-    loadData()
+   
+    people = loadData()
        
   }
     private func searchPeople(keyword: String) {
         guard let encodedKeyword = keyword.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {return}
         PeopleAPI.getPeople(searchName: encodedKeyword) { (movies, error) in
-            if let error = error {
-                
+            if error != nil {
+                print(error as Any)
             }
         }
     }
 
-    func loadData() {
+    func loadData() -> [ResultsWrapper] {
+        var results = [ResultsWrapper]()
         if let path = Bundle.main.path(forResource: "userinfo", ofType: "json") {
             let myURL = URL.init(fileURLWithPath: path)
             if let data = try? Data.init(contentsOf: myURL) {
                 do {
                    let people = try JSONDecoder().decode(UserInfo.self,from: data)
-                    self.people = people.results
-                    self.people.sort{$0.name.first < $1.name.first}
+
+                    results = people.results
+                    results.sort{$0.name.first < $1.name.first}
                 } catch {
                     print(error)
                 }
             }
         }
+        return results
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let destination = segue.destination as? DetailViewController,
+        guard let destination = segue.destination as? PeopleDetailViewController,
         let selectedIndexpath = peopleTableView.indexPathForSelectedRow else { return }
         let peopleToSend = people[selectedIndexpath.row]
-        destination.name = "\(peopleToSend.name.first) \(peopleToSend.name.last)"
-        destination.location = "\(peopleToSend.location.city), \(peopleToSend.location.state)"
-        destination.email = peopleToSend.email
         destination.image = PeopleAPI.getImage(url: peopleToSend.picture.large)
         destination.people = peopleToSend
     }
@@ -87,9 +87,13 @@ extension ViewController: UITableViewDataSource {
 }
 
 extension ViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let searchBarText = searchBar.text else { return }
-       
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    people = loadData()
+        if searchText == "" {
+            return
+        } else {
+            people = loadData().filter{$0.name.first.lowercased().contains(searchText.lowercased())}
+        }
+        
     }
-    
 }
