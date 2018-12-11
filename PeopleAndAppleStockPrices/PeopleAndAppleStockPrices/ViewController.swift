@@ -27,8 +27,16 @@ class ViewController: UIViewController {
     super.viewDidLoad()
     
     loadData()
-//        xrdump(people)
+       
   }
+    private func searchPeople(keyword: String) {
+        guard let encodedKeyword = keyword.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {return}
+        PeopleAPI.getPeople(searchName: encodedKeyword) { (movies, error) in
+            if let error = error {
+                
+            }
+        }
+    }
 
     func loadData() {
         if let path = Bundle.main.path(forResource: "userinfo", ofType: "json") {
@@ -49,6 +57,10 @@ class ViewController: UIViewController {
         guard let destination = segue.destination as? DetailViewController,
         let selectedIndexpath = peopleTableView.indexPathForSelectedRow else { return }
         let peopleToSend = people[selectedIndexpath.row]
+        destination.name = "\(peopleToSend.name.first) \(peopleToSend.name.last)"
+        destination.location = "\(peopleToSend.location.city), \(peopleToSend.location.state)"
+        destination.email = peopleToSend.email
+        destination.image = PeopleAPI.getImage(url: peopleToSend.picture.large)
         destination.people = peopleToSend
     }
 }
@@ -76,7 +88,8 @@ extension ViewController: UITableViewDataSource {
 
 extension ViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-    
+        guard let searchBarText = searchBar.text else { return }
+       
     }
     
 }

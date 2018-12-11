@@ -14,10 +14,17 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var peopleLocation: UILabel!
     @IBOutlet weak var peopleEmail: UILabel!
     var people: ResultsWrapper!
+    var name: String!
+    var location: String!
+    var email: String!
+    var image: UIImage!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//peoplePicture.image =
+        peoplePicture.image = image
+        peopleName.text = name.capitalized
+        peopleLocation.text = location.capitalized
+        peopleEmail.text = email
     }
     
 }

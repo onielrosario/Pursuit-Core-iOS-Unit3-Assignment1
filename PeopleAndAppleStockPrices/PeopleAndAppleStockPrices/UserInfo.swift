@@ -15,6 +15,7 @@ struct ResultsWrapper: Codable {
     let name: NameWrapper
     let location: LocationWrapper
     let picture: Picture
+    let email: String
 }
 struct NameWrapper: Codable {
     let first: String
