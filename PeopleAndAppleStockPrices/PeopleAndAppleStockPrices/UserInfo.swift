@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct People: Codable {
+struct UserInfo: Codable {
     let results: [ResultsWrapper]
 }
 struct ResultsWrapper: Codable {
@@ -28,3 +28,5 @@ struct Picture: Codable {
     let medium: String
     let thumbnail: String
 }
+
+
