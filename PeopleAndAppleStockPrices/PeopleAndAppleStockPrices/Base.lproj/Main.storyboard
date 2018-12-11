@@ -74,6 +74,22 @@
             </objects>
             <point key="canvasLocation" x="1076" y="132.68365817091455"/>
         </scene>
+        <!--Stocks-->
+        <scene sceneID="FKl-QE-lN1">
+            <objects>
+                <viewController id="gYA-Nn-a9b" customClass="StockViewController" customModule="PeopleAndAppleStockPrices" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="O41-5o-5SF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="mba-7x-Zfd"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Stocks" id="3GD-xS-sML"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A7h-kA-5UG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1076" y="876"/>
+        </scene>
         <!--Detail View Controller-->
         <scene sceneID="csf-SS-i6g">
             <objects>
@@ -159,6 +175,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="AYY-RS-SJW"/>
+                        <segue destination="gYA-Nn-a9b" kind="relationship" relationship="viewControllers" id="sdF-3l-tLM"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JbS-aA-O5c" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -33,7 +33,6 @@ final class PeopleAPI {
                 do {
                     let peopleImageurl = UIImage.init(data: data)
                
-                
                 } catch {
                     completionHandler(nil, .badDecoding(error))
                 }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		09299BF821BF5B1F00E8414E /* PeopleAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09299BF721BF5B1F00E8414E /* PeopleAPIClient.swift */; };
 		093119CF21BF839300CB8438 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093119CE21BF839300CB8438 /* DetailViewController.swift */; };
+		0961C43821C062F800BEA6BE /* StockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0961C43721C062F800BEA6BE /* StockViewController.swift */; };
 		0990FEE321BB22BE00A8A522 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0990FEE221BB22BE00A8A522 /* UserInfo.swift */; };
 		577E5BEC21BA8BA10083EB97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577E5BEB21BA8BA10083EB97 /* AppDelegate.swift */; };
 		577E5BEE21BA8BA10083EB97 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577E5BED21BA8BA10083EB97 /* ViewController.swift */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		09299BF721BF5B1F00E8414E /* PeopleAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleAPIClient.swift; sourceTree = "<group>"; };
 		093119CE21BF839300CB8438 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		0961C43721C062F800BEA6BE /* StockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockViewController.swift; sourceTree = "<group>"; };
 		0990FEE221BB22BE00A8A522 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		577E5BE821BA8BA10083EB97 /* PeopleAndAppleStockPrices.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PeopleAndAppleStockPrices.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		577E5BEB21BA8BA10083EB97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				09299BF721BF5B1F00E8414E /* PeopleAPIClient.swift */,
 				0990FEE221BB22BE00A8A522 /* UserInfo.swift */,
 				577E5BEF21BA8BA10083EB97 /* Main.storyboard */,
+				0961C43721C062F800BEA6BE /* StockViewController.swift */,
 				093119CE21BF839300CB8438 /* DetailViewController.swift */,
 				577E5BFD21BA8BE20083EB97 /* Supporting Files */,
 				577E5BF721BA8BA20083EB97 /* Info.plist */,
@@ -169,6 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				577E5BEE21BA8BA10083EB97 /* ViewController.swift in Sources */,
+				0961C43821C062F800BEA6BE /* StockViewController.swift in Sources */,
 				0990FEE321BB22BE00A8A522 /* UserInfo.swift in Sources */,
 				093119CF21BF839300CB8438 /* DetailViewController.swift in Sources */,
 				09299BF821BF5B1F00E8414E /* PeopleAPIClient.swift in Sources */,

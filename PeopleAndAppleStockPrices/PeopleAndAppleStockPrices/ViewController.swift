@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     super.viewDidLoad()
     
     loadData()
-        dump(people)
+//        xrdump(people)
   }
 
     func loadData() {
@@ -46,7 +46,10 @@ class ViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        guard let destination = segue.destination as? DetailViewController,
+        let selectedIndexpath = peopleTableView.indexPathForSelectedRow else { return }
+        let peopleToSend = people[selectedIndexpath.row]
+        destination.people = peopleToSend
     }
 }
 
@@ -60,7 +63,14 @@ extension ViewController: UITableViewDataSource {
         let peopleinfo = people[indexPath.row]
         cell.textLabel?.text = "\(peopleinfo.name.first) \(peopleinfo.name.last)".capitalized
         cell.detailTextLabel?.text = "\(peopleinfo.location.city), \(peopleinfo.location.state)"
-       return cell
+        guard let imageUrl = URL.init(string: peopleinfo.picture.thumbnail) else { return UITableViewCell() }
+        do {
+            let data = try Data.init(contentsOf: (imageUrl))
+            cell.imageView?.image = UIImage.init(data: data)
+        } catch {
+            print(error)
+        }
+        return cell
     }
 }
 

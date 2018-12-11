@@ -13,11 +13,11 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var peopleName: UILabel!
     @IBOutlet weak var peopleLocation: UILabel!
     @IBOutlet weak var peopleEmail: UILabel!
-    var people: UserInfo!
+    var people: ResultsWrapper!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-peoplePicture.image = 
+//peoplePicture.image =
     }
     
 }
