@@ -22,6 +22,7 @@ struct NameWrapper: Codable {
 }
 struct LocationWrapper: Codable {
     let city: String
+    let state: String
 }
 struct Picture: Codable {
     let large: String

@@ -11,13 +11,21 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet weak var peopleTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
-  var people = [ResultsWrapper]()
+    var people = [ResultsWrapper]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.peopleTableView.reloadData()
+            }
+        }
+    }
 
     
     override func viewDidLoad() {
         title = "Random People"
      peopleTableView.dataSource = self
+        searchBar.delegate = self
     super.viewDidLoad()
+    
     loadData()
         dump(people)
   }
@@ -29,11 +37,16 @@ class ViewController: UIViewController {
                 do {
                    let people = try JSONDecoder().decode(UserInfo.self,from: data)
                     self.people = people.results
+                    self.people.sort{$0.name.first < $1.name.first}
                 } catch {
                     print(error)
                 }
             }
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
     }
 }
 
@@ -45,16 +58,15 @@ extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = peopleTableView.dequeueReusableCell(withIdentifier: "peopleCell", for: indexPath)
         let peopleinfo = people[indexPath.row]
-        cell.textLabel?.text = "\(peopleinfo.name.first) \(peopleinfo.name.last)"
-        cell.detailTextLabel?.text = peopleinfo.location.city
-        guard let imageUrl = URL.init(string: peopleinfo.picture.thumbnail) else { return UITableViewCell() }
-        do {
-            let data = try Data.init(contentsOf: (imageUrl))
-            cell.imageView?.image = UIImage.init(data: data)
-        } catch {
-            print(error)
-        }
+        cell.textLabel?.text = "\(peopleinfo.name.first) \(peopleinfo.name.last)".capitalized
+        cell.detailTextLabel?.text = "\(peopleinfo.location.city), \(peopleinfo.location.state)"
        return cell
     }
 }
 
+extension ViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    
+    }
+    
+}
