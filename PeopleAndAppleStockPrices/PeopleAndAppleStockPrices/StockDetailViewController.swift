@@ -21,6 +21,7 @@ class StockDetailViewController: UIViewController {
    stockDate.text = stockInfo.date
     stockOpeningLabel.text = "\(stockInfo.open)"
     stockClosingLabel.text = "\(stockInfo.close)"
+        stockImage.image = image
     }
   
 

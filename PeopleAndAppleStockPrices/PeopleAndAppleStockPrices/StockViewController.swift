@@ -8,11 +8,11 @@
 
 import UIKit
 
-var appleStock = [AppleStocks]()
+//var appleStock = [AppleStocks]()
 
 class StockViewController: UIViewController {
     @IBOutlet weak var stockTableView: UITableView!
-    var allStock = [appleStock] {
+    var allStock = [AppleStocks]() {
         didSet {
             DispatchQueue.main.async {
                 self.stockTableView.reloadData()
@@ -31,40 +31,43 @@ class StockViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
        guard let destination = segue.destination as? StockDetailViewController,
         let selectedStock = stockTableView.indexPathForSelectedRow else { return }
-        let stockCell = allStock[selectedStock.row - 1]
-        let stockToSend = stockCell[selectedStock.row]
-        destination.stockInfo = stockToSend
+        let stockCell = allStock[selectedStock.row]
+        //let stockToSend = stockCell[selectedStock.row]
+     destination.stockInfo = stockCell
+        if stockCell.change > 0 {
+            destination.image = UIImage.init(named: "thumbUp")
+            destination.view.backgroundColor = .green
+        } else {
+            destination.image = UIImage.init(named: "thumbsDown")
+             destination.view.backgroundColor = .red
+        }
+      
     }
-    
-    
-    
-    
-}
-
-func loadData() {
-    if let path = Bundle.main.path(forResource: "applstockinfo", ofType: "json") {
-       let myUrl = URL.init(fileURLWithPath: path)
-        if let data = try? Data(contentsOf: myUrl) {
-            do {
-               let stocks = try JSONDecoder().decode([AppleStocks].self, from: data)
-                appleStock = stocks
-            } catch {
-                print(error)
+    func loadData() {
+        if let path = Bundle.main.path(forResource: "applstockinfo", ofType: "json") {
+            let myUrl = URL.init(fileURLWithPath: path)
+            if let data = try? Data(contentsOf: myUrl) {
+                do {
+                    self.allStock = try JSONDecoder().decode([AppleStocks].self, from: data)
+                } catch {
+                    print(error)
+                }
+                return
             }
-            
-            return
         }
     }
 }
 
+
+
 extension StockViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return appleStock.count
+        return allStock.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = stockTableView.dequeueReusableCell(withIdentifier: "stockCell", for: indexPath) as? StockTableViewCell else { return UITableViewCell()}
-    let indexPath = appleStock[indexPath.row]
+    let indexPath = allStock[indexPath.row]
       cell.stockOpening.text = "\(indexPath.date)"
        cell.stockClosing.text = "\(indexPath.open)"
         if indexPath.change > 0 {
@@ -82,9 +85,4 @@ extension StockViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
-    
-    
-    
-    
-    
 }

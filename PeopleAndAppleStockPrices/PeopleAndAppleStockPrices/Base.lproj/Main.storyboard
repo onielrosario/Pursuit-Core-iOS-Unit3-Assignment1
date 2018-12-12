@@ -128,10 +128,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="stockClosing" destination="kB5-dy-Ixc" id="sku-Uj-9rg"/>
+                                            <outlet property="stockClosing" destination="kB5-dy-Ixc" id="d1g-cZ-qf7"/>
                                             <outlet property="stockImage" destination="etE-25-kzf" id="Yfe-HK-hiE"/>
                                             <outlet property="stockOpening" destination="TnV-Xj-FnK" id="zwf-Ih-fQB"/>
-                                            <segue destination="aXc-Vd-l3x" kind="show" id="aWm-xp-bw0"/>
+                                            <segue destination="aXc-Vd-l3x" kind="show" id="GgH-AE-DfS"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -207,10 +207,10 @@
                         <viewLayoutGuide key="safeArea" id="4yX-aU-FJl"/>
                     </view>
                     <connections>
-                        <outlet property="stockClosing" destination="687-jX-hyF" id="Jcl-Pn-JbI"/>
+                        <outlet property="stockClosingLabel" destination="687-jX-hyF" id="YMM-ef-ljx"/>
                         <outlet property="stockDate" destination="9rh-aV-gb8" id="pH9-Qc-Kvw"/>
                         <outlet property="stockImage" destination="p1c-fr-bhg" id="Sya-aB-ym5"/>
-                        <outlet property="stockOpening" destination="Goa-Zq-wwq" id="iAi-6z-5KK"/>
+                        <outlet property="stockOpeningLabel" destination="Goa-Zq-wwq" id="yia-TN-v2T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PU4-3P-74M" userLabel="First Responder" sceneMemberID="firstResponder"/>
