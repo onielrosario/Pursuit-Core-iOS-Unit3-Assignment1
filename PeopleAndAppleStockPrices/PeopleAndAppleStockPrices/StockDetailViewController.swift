@@ -18,7 +18,9 @@ class StockDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+   stockDate.text = stockInfo.date
+    stockOpeningLabel.text = "\(stockInfo.open)"
+    stockClosingLabel.text = "\(stockInfo.close)"
     }
   
 

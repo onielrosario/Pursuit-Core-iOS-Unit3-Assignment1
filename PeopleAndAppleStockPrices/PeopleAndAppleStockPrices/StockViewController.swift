@@ -20,7 +20,6 @@ class StockViewController: UIViewController {
         }
     }
    
-    
     override func viewDidLoad() {
         stockTableView.dataSource = self
         stockTableView.delegate = self
@@ -29,9 +28,18 @@ class StockViewController: UIViewController {
    loadData()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+       guard let destination = segue.destination as? StockDetailViewController,
+        let selectedStock = stockTableView.indexPathForSelectedRow else { return }
+        let stockCell = allStock[selectedStock.row - 1]
+        let stockToSend = stockCell[selectedStock.row]
+        destination.stockInfo = stockToSend
+    }
+    
+    
+    
     
 }
-
 
 func loadData() {
     if let path = Bundle.main.path(forResource: "applstockinfo", ofType: "json") {
@@ -59,8 +67,13 @@ extension StockViewController: UITableViewDataSource {
     let indexPath = appleStock[indexPath.row]
       cell.stockOpening.text = "\(indexPath.date)"
        cell.stockClosing.text = "\(indexPath.open)"
-        cell.stockImage.image = UIImage.init(named: "arrowChart")
-        
+        if indexPath.change > 0 {
+            cell.backgroundColor = .green
+            cell.stockImage.image = UIImage.init(named: "thumbUp")
+        } else {
+            cell.backgroundColor = .red
+             cell.stockImage.image = UIImage.init(named: "thumbsDown")
+        }
     return cell
     }
 }

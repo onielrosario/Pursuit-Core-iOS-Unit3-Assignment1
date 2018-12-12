@@ -74,7 +74,6 @@
 			children = (
 				577E5BED21BA8BA10083EB97 /* ViewController.swift */,
 				09299BF721BF5B1F00E8414E /* PeopleAPIClient.swift */,
-				0990FEE221BB22BE00A8A522 /* UserInfo.swift */,
 				577E5BEF21BA8BA10083EB97 /* Main.storyboard */,
 				0961C43D21C0C70200BEA6BE /* StockDetailViewController.swift */,
 				0961C43B21C08A2C00BEA6BE /* StockTableViewCell.swift */,
@@ -101,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				577E5BFE21BA8C3B0083EB97 /* userinfo.json */,
+				0990FEE221BB22BE00A8A522 /* UserInfo.swift */,
 				577E5C0021BA8C5C0083EB97 /* applstockinfo.json */,
 				0961C43921C0807D00BEA6BE /* AppleStockInfo.swift */,
 			);
