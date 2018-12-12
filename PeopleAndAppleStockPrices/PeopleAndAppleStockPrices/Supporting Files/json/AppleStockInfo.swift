@@ -18,4 +18,13 @@ struct AppleStocks: Codable {
     let open: Double
     let close: Double
     let change: Double
+    var year: Int {
+        let components = date.components(separatedBy: "-")
+        return Int(components[0])!
+    }
+    
+    var month: Int {
+        let components = date.components(separatedBy: "-")
+        return Int(components[1])!
+    }
 }

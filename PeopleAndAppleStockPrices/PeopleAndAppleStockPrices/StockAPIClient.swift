@@ -24,6 +24,7 @@ final class StockAPI {
             } else if let data = data {
                 do {
                  let stocks = try JSONDecoder().decode(AppleStocks.self, from: data)
+                    
                 } catch {
                     
                 }
