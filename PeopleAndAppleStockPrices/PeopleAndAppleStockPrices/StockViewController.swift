@@ -13,7 +13,7 @@ import UIKit
 class StockViewController: UIViewController {
     @IBOutlet weak var stockTableView: UITableView!
     
-    var allStock = [AppleStocks]() {
+    var allStock = [AppleStocks]().sorted{ $0.year < $1.year } {
         didSet {
             DispatchQueue.main.async {
                 self.getAllDates()
@@ -22,7 +22,7 @@ class StockViewController: UIViewController {
         }
     }
     
-    var allDates: [(month: String, year: String)] = []
+    var allDates: [(month: String, year: String)] = [].sorted{$0.year < $1.year}
     
     
     override func viewDidLoad() {
