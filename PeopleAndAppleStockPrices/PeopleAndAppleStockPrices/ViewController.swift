@@ -45,7 +45,6 @@ class ViewController: UIViewController {
             if let data = try? Data.init(contentsOf: myURL) {
                 do {
                    let people = try JSONDecoder().decode(UserInfo.self,from: data)
-
                     results = people.results
                     results.sort{$0.name.first < $1.name.first}
                 } catch {
