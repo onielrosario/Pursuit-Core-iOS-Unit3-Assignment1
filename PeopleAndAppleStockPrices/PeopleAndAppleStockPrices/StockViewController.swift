@@ -85,7 +85,7 @@ class StockViewController: UIViewController {
             let stocksInSection = stockBySection(section: indexPath.section)
             let stock = stocksInSection[indexPath.row]
             cell.stockOpening.text = "\(stock.date)"
-            cell.stockClosing.text = "\(stock.open)"
+            cell.stockClosing.text = "\(String(format: "%.2f", stock.open))"
             if stock.close > stock.open {
                 cell.backgroundColor = .green
                 cell.stockImage.image = UIImage.init(named: "thumbUp")
@@ -98,7 +98,13 @@ class StockViewController: UIViewController {
         
         func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
             let thisSection = sectionNames[section]
-            return thisSection
+            var sum = 0.0
+            let stocksInSection = allStock.filter{$0.sectionName == thisSection }
+            for stock in stocksInSection {
+                sum += stock.open
+            }
+            let average = sum / Double(stocksInSection.count)
+            return thisSection + " " + "Average: $\(String(format: "%.2f", average))"
         }
     }
     

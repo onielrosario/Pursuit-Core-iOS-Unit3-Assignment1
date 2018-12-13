@@ -25,8 +25,8 @@ class StockDetailViewController: UIViewController {
             view.backgroundColor = .red
         }
         stockDate.text = "Date: \(stockInfo.date)"
-        stockOpeningLabel.text = "Stock open: \(stockInfo.open)"
-        stockClosingLabel.text = "Stock close: \(stockInfo.close)"
+        stockOpeningLabel.text = "Stock open: \(String(format: "%.2f", stockInfo.open))"
+        stockClosingLabel.text = "Stock close: \(String(format: "%.2f", stockInfo.close))"
         
     }
     
