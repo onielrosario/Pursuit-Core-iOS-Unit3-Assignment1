@@ -16,12 +16,23 @@ class StockDetailViewController: UIViewController {
     var stockInfo: AppleStocks!
     var image: UIImage!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    func configDetailViewController() {
+        if stockInfo.close > stockInfo.open {
+            stockImage.image = UIImage.init(named: "thumbUp")
+            view.backgroundColor = .green
+        } else {
+            stockImage.image = UIImage.init(named: "thumbsDown")
+            view.backgroundColor = .red
+        }
         stockDate.text = "Date: \(stockInfo.date)"
         stockOpeningLabel.text = "Stock open: \(stockInfo.open)"
         stockClosingLabel.text = "Stock close: \(stockInfo.close)"
-        stockImage.image = image
+        
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+      configDetailViewController()
     }
   
 

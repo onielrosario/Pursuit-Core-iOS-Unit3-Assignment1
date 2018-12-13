@@ -32,7 +32,7 @@ final class PeopleAPI {
             if let data = data {
                 do {
                     let peopleData = try JSONDecoder().decode(UserInfo.self, from: data)
-               completionHandler(peopleData.results, nil)
+                    completionHandler(peopleData.results, nil)
                 } catch {
                     completionHandler(nil, .badDecoding(error))
                 }

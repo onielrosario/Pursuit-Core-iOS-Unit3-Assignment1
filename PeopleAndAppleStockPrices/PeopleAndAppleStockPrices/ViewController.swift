@@ -93,6 +93,5 @@ extension ViewController: UISearchBarDelegate {
         } else {
             people = loadData().filter{$0.name.first.lowercased().contains(searchText.lowercased())}
         }
-        
     }
 }
