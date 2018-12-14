@@ -15,7 +15,6 @@ class PeopleDetailViewController: UIViewController {
     @IBOutlet weak var peopleEmail: UILabel!
     var people: ResultsWrapper!
     var image: UIImage!
-
     override func viewDidLoad() {
         super.viewDidLoad()
         peoplePicture.image = image
@@ -23,5 +22,4 @@ class PeopleDetailViewController: UIViewController {
         peopleLocation.text = "\(people.location.city), \(people.location.state)".capitalized
         peopleEmail.text = people.email
     }
-    
 }

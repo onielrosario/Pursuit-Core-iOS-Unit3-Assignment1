@@ -12,16 +12,10 @@ class StockTableViewCell: UITableViewCell {
     @IBOutlet weak var stockImage: UIImageView!
     @IBOutlet weak var stockOpening: UILabel!
     @IBOutlet weak var stockClosing: UILabel!
-    
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-       
     }
-
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-
 }

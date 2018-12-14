@@ -15,7 +15,6 @@ class StockDetailViewController: UIViewController {
     @IBOutlet weak var stockClosingLabel: UILabel!
     var stockInfo: AppleStocks!
     var image: UIImage!
-    
     func configDetailViewController() {
         if stockInfo.close > stockInfo.open {
             stockImage.image = UIImage.init(named: "thumbUp")
@@ -27,13 +26,9 @@ class StockDetailViewController: UIViewController {
         stockDate.text = "Date: \(stockInfo.date)"
         stockOpeningLabel.text = "Stock open: \(String(format: "%.2f", stockInfo.open))"
         stockClosingLabel.text = "Stock close: \(String(format: "%.2f", stockInfo.close))"
-        
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
       configDetailViewController()
     }
-  
-
 }

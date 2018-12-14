@@ -8,11 +8,9 @@
 
 import Foundation
 
-
 struct AppleStockInfo: Codable {
     let appleStocksInfo: [AppleStocks]
 }
-
 struct AppleStocks: Codable {
     let date: String
     let open: Double
@@ -21,7 +19,6 @@ struct AppleStocks: Codable {
         let components = date.components(separatedBy: "-")
         return Int(components[0])!
     }
-    
     var month: Int {
         let components = date.components(separatedBy: "-")
         return Int(components[1])!
@@ -32,7 +29,6 @@ struct AppleStocks: Codable {
         let month = dateComponents[1]
         return "\(MonthsDict[month]!) - \(year)"
     }
-    
      private let MonthsDict = [
         "01":"January",
         "02":"February",

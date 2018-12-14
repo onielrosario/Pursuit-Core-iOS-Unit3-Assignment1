@@ -15,11 +15,7 @@ enum PeopleError {
     case badDecoding(Error)
     
 }
-
-
-
 final class PeopleAPI {
-    
     static func getPeople(searchName: String, completionHandler: @escaping([ResultsWrapper]?, PeopleError?) -> Void ) {
         guard let url = URL.init(string: "https://randomuser.me/api/?inc=gender,\(searchName),nat") else {
             completionHandler(nil, .badURL("url failed"))
@@ -39,12 +35,10 @@ final class PeopleAPI {
             }
         }.resume()
     }
-    
     static func getImage(url: String) -> UIImage? {
         guard let imageURL = URL.init(string: url) else { return nil}
         guard let data = try? Data.init(contentsOf: imageURL) else {return nil}
         let image = UIImage.init(data: data)
         return image
     }
-    
 }

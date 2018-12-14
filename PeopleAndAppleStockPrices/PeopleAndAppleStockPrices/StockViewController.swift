@@ -10,7 +10,6 @@ import UIKit
 
 class StockViewController: UIViewController {
     @IBOutlet weak var stockTableView: UITableView!
-    
     var allStock = [AppleStocks]() {
         didSet {
             DispatchQueue.main.async {
@@ -19,11 +18,6 @@ class StockViewController: UIViewController {
         }
     }
     var sectionNames = [String]()
-    
-    
-   
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         stockTableView.dataSource = self
@@ -32,11 +26,9 @@ class StockViewController: UIViewController {
         loadData()
         fillSectionNames()
     }
-    
     func stockBySection(section: Int) -> [AppleStocks] {
         return allStock.filter{$0.sectionName == sectionNames[section]}
     }
-    
     func fillSectionNames() {
         for stock in allStock {
             if !sectionNames.contains(stock.sectionName) {
@@ -44,16 +36,12 @@ class StockViewController: UIViewController {
             }
         }
     }
-    
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let destination = segue.destination as? StockDetailViewController,
             let selectedStock = stockTableView.indexPathForSelectedRow else { return }
-        //guard let stockCell = sender as? StockTableViewCell else {return}
         let stockThisSection = stockBySection(section: selectedStock.section)
         let thisStock = stockThisSection[selectedStock.row]
         destination.stockInfo = thisStock
-       
     }
     func loadData() {
         if let path = Bundle.main.path(forResource: "applstockinfo", ofType: "json") {
@@ -69,9 +57,6 @@ class StockViewController: UIViewController {
         }
     }
 }
-    
-    
-    
     extension StockViewController: UITableViewDataSource {
         func numberOfSections(in tableView: UITableView) -> Int {
             return sectionNames.count
@@ -79,7 +64,6 @@ class StockViewController: UIViewController {
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
                return stockBySection(section: section).count
         }
-        
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             guard let cell = stockTableView.dequeueReusableCell(withIdentifier: "stockCell", for: indexPath) as? StockTableViewCell else { return UITableViewCell()}
             let stocksInSection = stockBySection(section: indexPath.section)
@@ -95,7 +79,6 @@ class StockViewController: UIViewController {
             }
             return cell
         }
-        
         func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
             let thisSection = sectionNames[section]
             var sum = 0.0
@@ -107,7 +90,6 @@ class StockViewController: UIViewController {
             return thisSection + " " + "Average: $\(String(format: "%.2f", average))"
         }
     }
-    
     extension StockViewController: UITableViewDelegate {
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
             return 80
