@@ -15,14 +15,14 @@ struct AppleStocks: Codable {
     let date: String
     let open: Double
     let close: Double
-    var year: Int {
-        let components = date.components(separatedBy: "-")
-        return Int(components[0])!
-    }
-    var month: Int {
-        let components = date.components(separatedBy: "-")
-        return Int(components[1])!
-    }
+//    var year: Int {
+//        let components = date.components(separatedBy: "-")
+//        return Int(components[0])!
+//    }
+//    var month: Int {
+//        let components = date.components(separatedBy: "-")
+//        return Int(components[1])!
+//    }
     var sectionName: String {
        var dateComponents = date.components(separatedBy: "-")
         let year = dateComponents[0]

@@ -90,6 +90,7 @@ class StockViewController: UIViewController {
             return thisSection + " " + "Average: $\(String(format: "%.2f", average))"
         }
     }
+
     extension StockViewController: UITableViewDelegate {
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
             return 80

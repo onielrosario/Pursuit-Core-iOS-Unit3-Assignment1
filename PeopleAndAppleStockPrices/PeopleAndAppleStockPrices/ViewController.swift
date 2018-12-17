@@ -89,4 +89,9 @@ extension ViewController: UISearchBarDelegate {
             people = loadData().filter{$0.name.first.lowercased().contains(searchText.lowercased())}
         }
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchBar.text = ""
+    }
 }
