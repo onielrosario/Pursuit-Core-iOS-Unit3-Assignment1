@@ -92,6 +92,9 @@ extension ViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        searchBar.text = ""
+    
+        if searchBar.text == "" {
+            people = loadData()
+        }
     }
 }
